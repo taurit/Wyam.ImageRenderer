@@ -20,14 +20,18 @@ namespace Wyam.ImageRenderer.ManualTests
 
         private static void Main(string[] args)
         {
-            var sut = new FigTagFinder(HtmlFragment);
-            var tags = sut.FoundTags;
-            Debug.Assert(tags.Count == 1);
-            Debug.Assert(tags[0].Width == 6);
+            ImageFinder sut = new ImageFinder();
+            var alternativePaths = sut.GetPotentialInstances("d:/Projekty/Taurit.Blog.input", "/assets/img/image.jpg");
 
-            var renderedHtml = new FigTagRenderer(tags[0], 666, null).Render();
-            Console.WriteLine(renderedHtml);
-            Console.ReadLine();
+
+            //var sut = new FigTagFinder(HtmlFragment);
+            //var tags = sut.FoundTags;
+            //Debug.Assert(tags.Count == 1);
+            //Debug.Assert(tags[0].Width == 6);
+
+            //var renderedHtml = new FigTagRenderer(tags[0], new ImageFinder()).Render(123, "/");
+            //Console.WriteLine(renderedHtml);
+            //Console.ReadLine();
         }
     }
 }

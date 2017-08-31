@@ -10,8 +10,8 @@ namespace Wyam.ImageRenderer.Tests
         [TestMethod]
         public void EmptyTag_ShouldRenderWithNoException()
         {
-            var sut = new FigTagRenderer(new FigTag("<fig />"), 666, null);
-            var rendered = sut.Render();
+            var sut = new FigTagRenderer(new FigTag("<fig />"), new ImageFinder());
+            var rendered = sut.Render(1, "test/");
             Console.WriteLine(rendered);
         }
     }

@@ -8,18 +8,16 @@ namespace Wyam.ImageRenderer.FigHtmlTag
 {
     public class FigTagRenderer
     {
-        private readonly int _ordinal;
-        private readonly string _pathToRootInputDirectory;
         private readonly FigTag _tagToRender;
+        private readonly ImageFinder _alternativeImageFormatFinder;
 
-        public FigTagRenderer([NotNull] FigTag tagToRender, int ordinal, [NotNull] string pathToRootInputDirectory)
+        public FigTagRenderer([NotNull] FigTag tagToRender, ImageFinder alternativeImageFormatFinder)
         {
             _tagToRender = tagToRender;
-            _ordinal = ordinal;
-            _pathToRootInputDirectory = pathToRootInputDirectory;
+            _alternativeImageFormatFinder = alternativeImageFormatFinder;
         }
 
-        public string Render()
+        public string Render(int ordinal, [NotNull] string pathToRootInputDirectory)
         {
             // validate input parameters
             if (_tagToRender.Width < 0 || _tagToRender.Width > 12)
@@ -28,12 +26,12 @@ namespace Wyam.ImageRenderer.FigHtmlTag
                 return RenderError("Width is not valid, should be even to allow center image");
             if (_tagToRender.Src == null)
                 return RenderError("Src must not be null");
-            if (_ordinal < 1)
+            if (ordinal < 1)
                 return RenderError("Figure number (ordinal) must be >= 1");
 
-            var caption = RenderCaption(); // render caption and source if present
+            var caption = RenderCaption(ordinal); // render caption and source if present
             var picture =
-                RenderPicture(_pathToRootInputDirectory,
+                RenderPicture(pathToRootInputDirectory,
                     _tagToRender.Src); // render picture element with <img> inside and alternative formats like WebP
 
             //language=html
@@ -55,20 +53,23 @@ namespace Wyam.ImageRenderer.FigHtmlTag
             Contract.Assert(Directory.Exists(pathToRootInputDirectory));
             Contract.Assert(!string.IsNullOrWhiteSpace(src));
 
-            var imageFullPath = Path.Combine(pathToRootInputDirectory, src);
+            List<ImageInstance> allFormats = _alternativeImageFormatFinder.GetAllFormatsOfImage(pathToRootInputDirectory, src);
 
+            string picture = "<picture>";
+            foreach (var imageFormat in allFormats)
+            {
+                picture += $@"  <source srcset='{imageFormat.ServerRelativePath}' type='{imageFormat.Mimetype}' />";
+            }
+            
 
-            return $@"<img src='{_tagToRender.Src}' alt='{_tagToRender.Alt}' />";
+            picture += $@"  <img class='img-responsive' src='{_tagToRender.Src}' alt='{_tagToRender.Alt}' />"; // fallback img tag
+            picture += "</picture>";
+
+            return picture;
         }
+        
 
-        private List<string> FindAlternativeFormatsFormImage(string imageFullPath)
-        {
-            List<string> todo;
-            throw new NotImplementedException();
-        }
-
-
-        private string RenderCaption()
+        private string RenderCaption(int ordinal)
         {
             var caption = "";
             var source = "";
@@ -84,7 +85,7 @@ namespace Wyam.ImageRenderer.FigHtmlTag
             if (!string.IsNullOrWhiteSpace(_tagToRender.Caption))
                 caption = $@"
                         <div class='caption'>
-                            <figcaption>Rys. {_ordinal}. {_tagToRender.Caption}.{source}
+                            <figcaption>Rys. {ordinal}. {_tagToRender.Caption}.{source}
                             </figcaption>
                         </div>";
             return caption;

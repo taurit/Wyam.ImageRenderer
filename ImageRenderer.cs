@@ -31,10 +31,11 @@ namespace Wyam.ImageRenderer
             var newContent = contentBefore;
             var foundFigTags = new FigTagFinder(contentBefore).FoundTags;
             var ordinal = 1;
+            var imageFinder = new ImageFinder();
             foreach (var figTag in foundFigTags)
             {
-                var renderedPicture =
-                    new FigTagRenderer(figTag, ordinal++, @"d:\Projekty\Taurit.Blog\input\").Render();
+                var renderer = new FigTagRenderer(figTag, imageFinder);
+                var renderedPicture = renderer.Render(ordinal++, @"d:\Projekty\Taurit.Blog\input\");
                 newContent = newContent.Replace(figTag.RawHtml, renderedPicture);
             }
             return newContent;
