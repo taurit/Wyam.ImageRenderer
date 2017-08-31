@@ -21,7 +21,7 @@ namespace Wyam.ImageRenderer.ManualTests
         private static void Main(string[] args)
         {
             ImageFinder sut = new ImageFinder();
-            var alternativePaths = sut.GetPotentialInstances("d:/Projekty/Taurit.Blog.input", "/assets/img/image.jpg");
+            var alternativePaths = sut.GetPotentialInstances("d:\\Projekty\\Taurit.Blog.input", "/assets/img/posts/pavlovs-dogs-mark-stivers.png");
 
 
             //var sut = new FigTagFinder(HtmlFragment);

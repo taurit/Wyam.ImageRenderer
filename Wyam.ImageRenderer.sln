@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageRenderer.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageRenderer.ManualTests", "Wyam.ImageRenderer.ManualTests\Wyam.ImageRenderer.ManualTests.csproj", "{D4D210AA-567B-49F7-8490-F2328C388BAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taurit.BlogpostImageConverter", "Taurit.BlogpostImageConverter\Taurit.BlogpostImageConverter.csproj", "{ED265A9D-BA03-48B3-A079-BBE2D7CBC6CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D4D210AA-567B-49F7-8490-F2328C388BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4D210AA-567B-49F7-8490-F2328C388BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4D210AA-567B-49F7-8490-F2328C388BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED265A9D-BA03-48B3-A079-BBE2D7CBC6CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED265A9D-BA03-48B3-A079-BBE2D7CBC6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED265A9D-BA03-48B3-A079-BBE2D7CBC6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED265A9D-BA03-48B3-A079-BBE2D7CBC6CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

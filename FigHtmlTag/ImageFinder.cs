@@ -15,33 +15,46 @@ namespace Wyam.ImageRenderer.FigHtmlTag
             allInstances.AddRange(potential.Where(x => File.Exists(x.FullPath)));
 
             // add original - last, as it's the most common but also least compressed format
-            allInstances.Add(new ImageInstance(pathToRootInputDirectory, relativePath));
+            var baseImage = new ImageInstance(pathToRootInputDirectory, relativePath, false);
+            if (File.Exists(baseImage.FullPath))
+                allInstances.Add(baseImage);
             
             return allInstances;
         }
 
         public List<ImageInstance> GetPotentialInstances(string pathToRootInputDirectory, string relativePath)
         {
+            relativePath = relativePath.Replace(".hq.", ".");
+
             var potentialPaths = new List<ImageInstance>(4);
             var relativeDirectory = relativePath.Substring(0, relativePath.LastIndexOf('/'));
             var fileNameWithExtension = new FileInfo(relativePath).Name;
             var originalExtensionWithDot = new FileInfo(relativePath).Extension;
             var fileNameWithoutExtension = fileNameWithExtension.Substring(0, fileNameWithExtension.Length - originalExtensionWithDot.Length);
-            
 
-            // Eg. /assets/img/image.jpg -> /assets/img/image.jpg.webp
-            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, relativePath + ".webp"));
-
-            // Eg. /assets/img/image.jpg -> /assets/img/image.webp
-            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/{fileNameWithoutExtension}.webp"));
-
-            // Eg. /assets/img/image.jpg -> /assets/img/webp/image.jpg.webp
-            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/webp/{fileNameWithoutExtension}{originalExtensionWithDot}.webp"));
+            // order: from the most to the least preferred
 
             // Eg. /assets/img/image.jpg -> /assets/img/webp/image.webp
-            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/webp/{fileNameWithoutExtension}.webp"));
+            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/webp/{fileNameWithoutExtension}.webp", false));
+
+            // Eg. /assets/img/image.jpg -> /assets/img/webp/image.jpg.webp
+            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/webp/{fileNameWithoutExtension}{originalExtensionWithDot}.webp", false));
+
+            // Eg. /assets/img/image.jpg -> /assets/img/image.jpg.webp
+            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, relativePath + ".webp", false));
+
+            // Eg. /assets/img/image.jpg -> /assets/img/image.webp
+            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/{fileNameWithoutExtension}.webp", false));
+
+            // Eg. /assets/img/image.jpg -> /assets/img/jpeg/image.jpg
+            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/jpeg/{fileNameWithoutExtension}jpg", true));
+
+            // Eg. /assets/img/image.jpg -> /assets/img/png/image.png
+            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/png/{fileNameWithoutExtension}.png", true));
 
             return potentialPaths;
         }
+
+
     }
 }

@@ -6,16 +6,19 @@ namespace Wyam.ImageRenderer.FigHtmlTag
 {
     public class ImageInstance
     {
-        public ImageInstance(string rootDirectoryPath, string serverRelativePath)
+
+        public ImageInstance(string rootDirectoryPath, string serverRelativePath, bool canBeUsedAsFallbackFormat)
         {
             Contract.Assert(!rootDirectoryPath.Contains("/"), "Path should use backslashes, not forward slashes");
 
             RootDirectoryPath = rootDirectoryPath;
             ServerRelativePath = serverRelativePath;
+            CanBeUsedAsFallbackFormat = canBeUsedAsFallbackFormat;
         }
 
         public string RootDirectoryPath { get; }
         public string ServerRelativePath { get; }
+        public bool CanBeUsedAsFallbackFormat { get; }
 
         public string Mimetype
         {

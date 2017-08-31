@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
+using System.Linq;
 using JetBrains.Annotations;
 
 namespace Wyam.ImageRenderer.FigHtmlTag
@@ -60,9 +61,10 @@ namespace Wyam.ImageRenderer.FigHtmlTag
             {
                 picture += $@"  <source srcset='{imageFormat.ServerRelativePath}' type='{imageFormat.Mimetype}' />";
             }
-            
 
-            picture += $@"  <img class='img-responsive' src='{_tagToRender.Src}' alt='{_tagToRender.Alt}' />"; // fallback img tag
+            var defaultImage = allFormats.First(image => image.CanBeUsedAsFallbackFormat);
+
+            picture += $@"  <img class='img-responsive' src='{defaultImage.ServerRelativePath}' alt='{_tagToRender.Alt}' />"; // fallback img tag
             picture += "</picture>";
 
             return picture;
