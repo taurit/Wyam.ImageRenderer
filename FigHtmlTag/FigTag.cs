@@ -1,7 +1,7 @@
 ﻿using System;
 using HtmlAgilityPack;
 
-namespace Wyam.ImageExtender.FigHtmlTag
+namespace Wyam.ImageRenderer.FigHtmlTag
 {
     public class FigTag
     {

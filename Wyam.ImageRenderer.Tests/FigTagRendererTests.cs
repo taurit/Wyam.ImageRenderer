@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Wyam.ImageExtender.FigHtmlTag;
+using Wyam.ImageRenderer.FigHtmlTag;
 
-namespace Wyam.ImageExtender.Tests
+namespace Wyam.ImageRenderer.Tests
 {
     [TestClass]
     public class FigTagRendererTests

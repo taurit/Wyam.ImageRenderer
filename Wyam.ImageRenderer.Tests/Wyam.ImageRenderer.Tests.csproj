@@ -7,8 +7,8 @@
     <ProjectGuid>{ED0F8A2E-F21C-4BF3-B3D7-27DF22B0258A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wyam.ImageExtender.Tests</RootNamespace>
-    <AssemblyName>Wyam.ImageExtender.Tests</AssemblyName>
+    <RootNamespace>Wyam.ImageRenderer.Tests</RootNamespace>
+    <AssemblyName>Wyam.ImageRenderer.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wyam.ImageExtender.csproj">
+    <ProjectReference Include="..\Wyam.ImageRenderer.csproj">
       <Project>{6bf33ca9-1351-4949-856b-c8ecc11efc72}</Project>
-      <Name>Wyam.ImageExtender</Name>
+      <Name>Wyam.ImageRenderer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

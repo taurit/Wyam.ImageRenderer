@@ -1,4 +1,4 @@
-﻿namespace Wyam.ImageExtender.FigHtmlTag
+﻿namespace Wyam.ImageRenderer.FigHtmlTag
 {
     internal class AlternativeImageFormatFinder
     {

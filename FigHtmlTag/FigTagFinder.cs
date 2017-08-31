@@ -2,7 +2,7 @@
 using System.Diagnostics.Contracts;
 using System.Text.RegularExpressions;
 
-namespace Wyam.ImageExtender.FigHtmlTag
+namespace Wyam.ImageRenderer.FigHtmlTag
 {
     public class FigTagFinder
     {

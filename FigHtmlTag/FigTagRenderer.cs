@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 using System.IO;
 using JetBrains.Annotations;
 
-namespace Wyam.ImageExtender.FigHtmlTag
+namespace Wyam.ImageRenderer.FigHtmlTag
 {
     public class FigTagRenderer
     {

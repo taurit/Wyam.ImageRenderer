@@ -3,11 +3,11 @@ using System.IO;
 using Wyam.Common.Documents;
 using Wyam.Common.Execution;
 using Wyam.Common.Modules;
-using Wyam.ImageExtender.FigHtmlTag;
+using Wyam.ImageRenderer.FigHtmlTag;
 
-namespace Wyam.ImageExtender
+namespace Wyam.ImageRenderer
 {
-    public class ImageExtender : IModule
+    public class ImageRenderer : IModule
     {
         public IEnumerable<IDocument> Execute(IReadOnlyList<IDocument> inputs, IExecutionContext context)
         {

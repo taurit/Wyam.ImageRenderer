@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using Wyam.ImageExtender.FigHtmlTag;
+using Wyam.ImageRenderer.FigHtmlTag;
 
-namespace Wyam.ImageExtender.ManualTests
+namespace Wyam.ImageRenderer.ManualTests
 {
     /// <summary>
     ///     Program for quick manual testing, since running tests in debug mode fails for this project in my VS and I have no

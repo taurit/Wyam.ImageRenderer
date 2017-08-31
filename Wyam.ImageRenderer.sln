@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageExtender", "Wyam.ImageExtender.csproj", "{6BF33CA9-1351-4949-856B-C8ECC11EFC72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageRenderer", "Wyam.ImageRenderer.csproj", "{6BF33CA9-1351-4949-856B-C8ECC11EFC72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageExtender.Tests", "Wyam.ImageExtender.Tests\Wyam.ImageExtender.Tests.csproj", "{ED0F8A2E-F21C-4BF3-B3D7-27DF22B0258A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageRenderer.Tests", "Wyam.ImageRenderer.Tests\Wyam.ImageRenderer.Tests.csproj", "{ED0F8A2E-F21C-4BF3-B3D7-27DF22B0258A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageExtender.ManualTests", "Wyam.ImageExtender.ManualTests\Wyam.ImageExtender.ManualTests.csproj", "{D4D210AA-567B-49F7-8490-F2328C388BAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageRenderer.ManualTests", "Wyam.ImageRenderer.ManualTests\Wyam.ImageRenderer.ManualTests.csproj", "{D4D210AA-567B-49F7-8490-F2328C388BAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
