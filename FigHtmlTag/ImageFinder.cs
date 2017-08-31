@@ -47,7 +47,7 @@ namespace Wyam.ImageRenderer.FigHtmlTag
             potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/{fileNameWithoutExtension}.webp", false));
 
             // Eg. /assets/img/image.jpg -> /assets/img/jpeg/image.jpg
-            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/jpeg/{fileNameWithoutExtension}jpg", true));
+            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/jpeg/{fileNameWithoutExtension}.jpg", true));
 
             // Eg. /assets/img/image.jpg -> /assets/img/png/image.png
             potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/png/{fileNameWithoutExtension}.png", true));
