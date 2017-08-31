@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageExtender", "Wyam.ImageExtender.csproj", "{6BF33CA9-1351-4949-856B-C8ECC11EFC72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageExtender.Tests", "Wyam.ImageExtender.Tests\Wyam.ImageExtender.Tests.csproj", "{ED0F8A2E-F21C-4BF3-B3D7-27DF22B0258A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wyam.ImageExtender.ManualTests", "Wyam.ImageExtender.ManualTests\Wyam.ImageExtender.ManualTests.csproj", "{D4D210AA-567B-49F7-8490-F2328C388BAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BF33CA9-1351-4949-856B-C8ECC11EFC72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF33CA9-1351-4949-856B-C8ECC11EFC72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BF33CA9-1351-4949-856B-C8ECC11EFC72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF33CA9-1351-4949-856B-C8ECC11EFC72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED0F8A2E-F21C-4BF3-B3D7-27DF22B0258A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED0F8A2E-F21C-4BF3-B3D7-27DF22B0258A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED0F8A2E-F21C-4BF3-B3D7-27DF22B0258A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED0F8A2E-F21C-4BF3-B3D7-27DF22B0258A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4D210AA-567B-49F7-8490-F2328C388BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4D210AA-567B-49F7-8490-F2328C388BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4D210AA-567B-49F7-8490-F2328C388BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4D210AA-567B-49F7-8490-F2328C388BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0927A466-605F-4830-BB56-80524C4C19B4}
+	EndGlobalSection
+EndGlobal
