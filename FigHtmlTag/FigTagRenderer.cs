@@ -62,9 +62,13 @@ namespace Wyam.ImageRenderer.FigHtmlTag
                 picture += $@"  <source srcset='{imageFormat.ServerRelativePath}' type='{imageFormat.Mimetype}' />";
             }
 
-            var defaultImage = allFormats.First(image => image.CanBeUsedAsFallbackFormat);
+            var imageThatCanBeUsedAsFallback = allFormats.Where(image => image.CanBeUsedAsFallbackFormat).ToList();
+            if (imageThatCanBeUsedAsFallback.Count == 0)
+                throw new ArgumentException($"No image representation was found that can be used as fallback format for '{src}'. Total images found: {allFormats.Count}");
 
-            picture += $@"  <img class='img-responsive' src='{defaultImage.ServerRelativePath}' alt='{_tagToRender.Alt}' />"; // fallback img tag
+            var defaultImage = imageThatCanBeUsedAsFallback.First(image => image.CanBeUsedAsFallbackFormat); // first in order is the most preferred one
+
+            picture += $@"  <img class='img-responsive img-generated' src='{defaultImage.ServerRelativePath}' alt='{_tagToRender.Alt}' />"; // fallback img tag
             picture += "</picture>";
 
             return picture;
