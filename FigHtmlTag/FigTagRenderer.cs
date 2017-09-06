@@ -48,7 +48,7 @@ namespace Wyam.ImageRenderer.FigHtmlTag
             return renderedTag;
         }
 
-        private string RenderPicture(string pathToRootInputDirectory, string src)
+        internal string RenderPicture(string pathToRootInputDirectory, string src)
         {
             Contract.Assert(pathToRootInputDirectory != null);
             Contract.Assert(Directory.Exists(pathToRootInputDirectory));
@@ -73,31 +73,42 @@ namespace Wyam.ImageRenderer.FigHtmlTag
 
             return picture;
         }
-        
 
-        private string RenderCaption(int ordinal)
+
+        internal string RenderCaption(int ordinal)
         {
-            var caption = "";
-            var source = "";
-            if (!string.IsNullOrWhiteSpace(_tagToRender.Source))
-                if (!string.IsNullOrWhiteSpace(_tagToRender.SourceLink))
-                    source =
-                        $@" Źródło: <a href='{_tagToRender.SourceLink}' rel='nofollow' target='_blank'>{
-                                _tagToRender.Source
-                            }</a>";
-                else
-                    source = $@" Źródło: {_tagToRender.Source}";
-
-            if (!string.IsNullOrWhiteSpace(_tagToRender.Caption))
-                caption = $@"
-                        <div class='caption'>
-                            <figcaption>Rys. {ordinal}. {_tagToRender.Caption}.{source}
+            var source = RenderSource(_tagToRender.Source, _tagToRender.SourceLink);
+            var captionWithPunctuationMark = _tagToRender.CaptionWithPunctuationMark;
+            var separator = (String.IsNullOrEmpty(source) || string.IsNullOrWhiteSpace(captionWithPunctuationMark) ? "" : " ");
+            
+            return $@"  <div class='caption'>
+                            <figcaption>Rys. {ordinal}. {captionWithPunctuationMark}{separator}{source}
                             </figcaption>
                         </div>";
-            return caption;
         }
 
-        private string RenderError(string message)
+        internal string RenderSource(string sourceDescription, string sourceLink)
+        {
+            var source = "";
+            if (!string.IsNullOrWhiteSpace(sourceDescription))
+            {
+                if (!string.IsNullOrWhiteSpace(sourceLink))
+                {
+                    source =
+                        $@"Źródło: <a href='{_tagToRender.SourceLink}' rel='nofollow' target='_blank'>{
+                                _tagToRender.Source
+                            }</a>";
+                }
+                else
+                {
+                    source = $@"Źródło: {_tagToRender.Source}";
+                }
+            }
+
+            return source;
+        }
+
+        internal string RenderError(string message)
         {
             return $"<p class='bg-danger text-danger render-error'>Image could not be rendered: {message}</p>";
         }

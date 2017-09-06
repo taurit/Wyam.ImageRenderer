@@ -24,6 +24,19 @@ namespace Wyam.ImageRenderer.FigHtmlTag
         public string Src => _figNode.Attributes["src"]?.Value;
         public string Alt => _figNode.Attributes["alt"]?.Value ?? ""; // alt="" is valid and better than no alt
         public string Caption => _figNode.Attributes["caption"]?.Value;
+
+        public string CaptionWithPunctuationMark
+        {
+            get
+            {
+                var caption = Caption;
+                if (String.IsNullOrWhiteSpace(caption))
+                    return string.Empty;
+                if (!(caption.EndsWith(".") || caption.EndsWith("!") || caption.EndsWith("?")))
+                    caption += ".";
+                return caption;
+            }
+        }
         public string Source => _figNode.Attributes["source"]?.Value;
         public string SourceLink => _figNode.Attributes["source-link"]?.Value;
         public string RawHtml { get; }
