@@ -81,7 +81,7 @@ namespace Wyam.ImageRenderer.FigHtmlTag
             var captionWithPunctuationMark = _tagToRender.CaptionWithPunctuationMark;
             var separator = (String.IsNullOrEmpty(source) || string.IsNullOrWhiteSpace(captionWithPunctuationMark) ? "" : " ");
             
-            return $@"  <div class='caption'>
+            return $@"<div class='caption'>
                             <figcaption>Rys. {ordinal}. {captionWithPunctuationMark}{separator}{source}
                             </figcaption>
                         </div>";
