@@ -71,6 +71,19 @@ namespace Wyam.ImageRenderer.Tests
             Assert.IsTrue(rendered.Contains("Rys. 1. Description. Źródło: Example"));
         }
 
+        [TestMethod]
+        public void WhenCaptionIsNotProvided_SourceShouldBeDisplayedAnyway()
+        {
+            var sut = new FigTagRenderer(new FigTag("<fig src='a.png' source='Example' />"), new ImageFinder());
+
+            // Act
+            var rendered = sut.RenderCaption(1);
+            Console.WriteLine(rendered);
+
+            // Assert
+            Assert.IsTrue(rendered.Contains("Rys. 1. Źródło: Example"));
+        }
+
 
         [TestMethod]
         public void ImageOrdinalNumber_ShouldBeVisibleInCaption()

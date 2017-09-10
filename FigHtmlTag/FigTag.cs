@@ -25,7 +25,20 @@ namespace Wyam.ImageRenderer.FigHtmlTag
         public string Alt => _figNode.Attributes["alt"]?.Value ?? ""; // alt="" is valid and better than no alt
         public string Caption => _figNode.Attributes["caption"]?.Value;
 
-        public string CaptionWithPunctuationMark
+        public bool LinkToFullImage
+        {
+            get
+            {
+                string userProvidedValue = _figNode.Attributes["link-to-full-image"]?.Value;
+                bool result = false;
+                Boolean.TryParse(userProvidedValue, out result);
+
+                return result;
+            }
+        }
+
+
+    public string CaptionWithPunctuationMark
         {
             get
             {

@@ -68,7 +68,16 @@ namespace Wyam.ImageRenderer.FigHtmlTag
 
             var defaultImage = imageThatCanBeUsedAsFallback.First(image => image.CanBeUsedAsFallbackFormat); // first in order is the most preferred one
 
+            if (_tagToRender.LinkToFullImage)
+            {
+                picture += $"<a href='{defaultImage.ServerRelativePath}' class='img-generated-link' target='_blank'>";
+            }
             picture += $@"  <img class='img-responsive img-generated' src='{defaultImage.ServerRelativePath}' alt='{_tagToRender.Alt}' />"; // fallback img tag
+            if (_tagToRender.LinkToFullImage)
+            {
+                picture += "</a>";
+            }
+
             picture += "</picture>";
 
             return picture;
