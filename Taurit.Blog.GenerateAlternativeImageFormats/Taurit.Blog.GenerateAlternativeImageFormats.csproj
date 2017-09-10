@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{ED265A9D-BA03-48B3-A079-BBE2D7CBC6CF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Taurit.BlogpostImageConverter</RootNamespace>
-    <AssemblyName>Taurit.BlogpostImageConverter</AssemblyName>
+    <RootNamespace>Taurit.Blog.GenerateAlternativeImageFormats</RootNamespace>
+    <AssemblyName>Taurit.Blog.GenerateAlternativeImageFormats</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
@@ -45,18 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlogpostImageConverter.cs" />
+    <Compile Include="BlogConversionJobs\BlogAssetConversionJob.cs" />
+    <Compile Include="BlogConversionJobs\ThumbnailConversionJob.cs" />
+    <Compile Include="GenerateAlternativeImageFormats.cs" />
+    <Compile Include="ImageConverters\IImageConverter.cs" />
+    <Compile Include="ImageConverters\ImageMagickConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Taurit.Blog.GenerateAlternativeImageFormats.csproj.vsspell" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wyam.ImageRenderer.csproj">
       <Project>{6bf33ca9-1351-4949-856b-c8ecc11efc72}</Project>
       <Name>Wyam.ImageRenderer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
