@@ -52,6 +52,8 @@ namespace Wyam.ImageRenderer.FigHtmlTag
             // Eg. /assets/img/image.jpg -> /assets/img/png/image.png
             potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, $"{relativeDirectory}/png/{fileNameWithoutExtension}.png", true));
 
+            potentialPaths.Add(new ImageInstance(pathToRootInputDirectory, relativePath, true));
+
             return potentialPaths;
         }
 

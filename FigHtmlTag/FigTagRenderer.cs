@@ -64,7 +64,7 @@ namespace Wyam.ImageRenderer.FigHtmlTag
 
             var imageThatCanBeUsedAsFallback = allFormats.Where(image => image.CanBeUsedAsFallbackFormat).ToList();
             if (imageThatCanBeUsedAsFallback.Count == 0)
-                throw new ArgumentException($"No image representation was found that can be used as fallback format for '{src}'. Total images found: {allFormats.Count}");
+                throw new ArgumentException($"No image representation was found that can be used as fallback format for '{src}'. Input dir = '{pathToRootInputDirectory}'. Total images found: {allFormats.Count}");
 
             var defaultImage = imageThatCanBeUsedAsFallback.First(image => image.CanBeUsedAsFallbackFormat); // first in order is the most preferred one
 

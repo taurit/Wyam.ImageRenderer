@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Wyam.Common.Documents;
 using Wyam.Common.Execution;
+using Wyam.Common.IO;
 using Wyam.Common.Modules;
 using Wyam.ImageRenderer.FigHtmlTag;
 
@@ -12,11 +14,14 @@ namespace Wyam.ImageRenderer
         public IEnumerable<IDocument> Execute(IReadOnlyList<IDocument> inputs, IExecutionContext context)
         {
             var documents = new List<IDocument>();
+            var rootPathWithoutProtocol = context.FileSystem.RootPath.ToString().Replace("file:///", "");
+            var rootPathWithoutProtocolWithForwardSlashes = Path.GetFullPath(rootPathWithoutProtocol);
+            string rootPath = $"{rootPathWithoutProtocolWithForwardSlashes}\\input\\";
 
             foreach (var input in inputs)
             {
                 var contentBefore = new StreamReader(input.GetStream()).ReadToEnd();
-                var contentAfter = FixImages(contentBefore);
+                var contentAfter = FixImages(contentBefore, rootPath);
                 var modifiedContentAsStream = context.GetContentStream(contentAfter);
 
                 var doc = context.GetDocument(input, modifiedContentAsStream, new Dictionary<string, object>());
@@ -26,7 +31,7 @@ namespace Wyam.ImageRenderer
             return documents;
         }
 
-        private string FixImages(string contentBefore)
+        private string FixImages(string contentBefore, string rootPathOfTheBlog)
         {
             var newContent = contentBefore;
             var foundFigTags = new FigTagFinder(contentBefore).FoundTags;
@@ -35,7 +40,7 @@ namespace Wyam.ImageRenderer
             foreach (var figTag in foundFigTags)
             {
                 var renderer = new FigTagRenderer(figTag, imageFinder);
-                var renderedPicture = renderer.Render(ordinal++, @"d:\Projekty\Taurit.Blog\input\");
+                var renderedPicture = renderer.Render(ordinal++, rootPathOfTheBlog);
                 newContent = newContent.Replace(figTag.RawHtml, renderedPicture);
             }
             return newContent;
